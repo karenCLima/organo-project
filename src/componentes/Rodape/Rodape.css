@@ -1,0 +1,30 @@
+.rodapeBase{
+    background-image: url(../../../public/imagens/fundo.png);
+    background-color: #6278F7;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.rodapeBase .redes{
+    display: flex;
+    width: 20%;
+    gap: 4px;
+
+}
+
+.rodapeBase .redes img{
+    width: 18px;
+}
+
+.rodapeBase .logo{
+    height: 42px;
+}
+
+.rodapeBase p{
+    color:#FFF
+}
