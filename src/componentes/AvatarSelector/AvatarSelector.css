@@ -1,0 +1,27 @@
+.imagensDiv{
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+
+.botaoS{
+    background-color: #6278f7;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    margin: 32px 0;
+}
+
+.botaoS:hover{
+    color: #95FFD4;
+}

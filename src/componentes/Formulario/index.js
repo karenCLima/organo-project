@@ -4,6 +4,7 @@ import Campo from '../Campo/Campo.js'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 import {v4 as uuidv4} from 'uuid'
+import AvatarSelector from '../AvatarSelector/index.js'
 
 const Formulario = (props) => {
 
@@ -41,7 +42,7 @@ const Formulario = (props) => {
                 aoAlterado={valor => setNome(valor)}
                 />
                 <Campo obrigatorio={true}  label="Função" placeholder="Digite a sua função na squad" valor={funcao} aoAlterado={valor => setFuncao(valor)}/>
-                <Campo label="Avatar" placeholder="Digite o endereço da imagem do seu avatar" valor={avatar} aoAlterado={valor => setAvatar(valor)}/>
+                <AvatarSelector valor={avatar} aoAlterado={valor => setAvatar(valor)}/>
                 <ListaSuspensa obrigatorio={true}  label ="Squad" itens={props.squads} valor ={squad} aoAlterado={valor=> setSquad(valor)}/>
                 <Botao>Criar Card</Botao>
             </form>
