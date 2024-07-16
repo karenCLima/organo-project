@@ -3,46 +3,47 @@ import Banner from './componentes/Banner/Banner.js'
 import Formulario from './componentes/Formulario/index.js';
 import Squad from './componentes/Squad/index.js';
 import Rodape from './componentes/Rodape/index.js';
+import {v4 as uuidv4} from 'uuid'
 
 function App() {
 
-  const squads = [
+  const [squads, setSquads] = useState([
     {
-      nome:'Na Minha Maquina Funciona',
-      corPrimaria: '#57C278',
-      corSecundaria: '#D9F7E9'
+      id: uuidv4(),
+      nome:'Na Minha Maquina Funciona',      
+      cor: '#57C278'
     },
     {
-      nome:'Centralizadores de div',
-      corPrimaria: '#82CFFA',
-      corSecundaria: '#E8F8FF'
+      id: uuidv4(),
+      nome:'Centralizadores de div',      
+      cor: '#82CFFA'
     },
     {
-      nome:'Socorrro Stack OverFlow',
-      corPrimaria: '#A6D157',
-      corSecundaria: '#F0F8E2'
+      id: uuidv4(),
+      nome:'Socorrro Stack OverFlow',      
+      cor: '#A6D157'
     },
     {
-      nome:'Fiscais de ;',
-      corPrimaria: '#E06B69',
-      corSecundaria: '#FDE7E8'
+      id: uuidv4(),
+      nome:'Fiscais de ;',      
+      cor: '#E06B69'
     },
     {
-      nome:'Perdidos no Debug',
-      corPrimaria: '#D86EDF',
-      corSecundaria: '#FAE9F5'
+      id: uuidv4(),
+      nome:'Perdidos no Debug',     
+      cor: '#DB6EBF'
     },
     {
+      id: uuidv4(),
       nome:'Deploy na Sexta-feira',
-      corPrimaria: '#FFBA05',
-      corSecundaria: '#FFF5D9'
+      cor: '#FFBA05'
     },
     {
+      id: uuidv4(),
       nome:'Delete Sem Where',
-      corPrimaria: '#FF8A29',
-      corSecundaria: '#FFEEDF'
+      cor: '#FF8A29'
     }
-]
+])
 
 const [participantes, setParticipantes] = useState([])
 
@@ -50,13 +51,39 @@ const novoParticipanteAdicionado = (participante) => {
   setParticipantes([...participantes,participante])
 }
 
+function deletarParticipante(id){
+  setParticipantes(participantes.filter(participante=> participante.id !== id));
+}
+
+function mudarCorSquad(cor,id){
+  setSquads(squads.map(squad=>{
+    if(squad.id === id){
+      squad.cor = cor;
+    }
+    return squad;
+  }))
+}
+
+function cadastrarSquad(novaSquad){
+  setSquads([...squads, {...novaSquad, id: uuidv4()}])
+}
+
+function resolverFavorito(id){
+  setParticipantes(participantes.map(participante=>{
+    if(participante.id === id) participante.favorito = !participante.favorito;
+    return participante
+  }))
+}
+
   return (
     <div className="App">
       <Banner/>
-      <Formulario squads={squads.map(squad => squad.nome)} participanteAdicionado={participante => novoParticipanteAdicionado(participante)}/>
+      <Formulario squads={squads.map(squad => squad.nome)} participanteAdicionado={participante => novoParticipanteAdicionado(participante)} cadastrarSquad={cadastrarSquad}/>
       
-      {squads.map(squad => <Squad key={squad.nome} nome={squad.nome} corPrimaria={squad.corPrimaria} corSecundaria={squad.corSecundaria} participantes={participantes.filter(participante => participante.squad === squad.nome)}/> )}
-      
+      <section className="squads">
+        {squads.map(squad => 
+          <Squad key={squad.id} id={squad.id}  mudarCor={mudarCorSquad} nome={squad.nome} cor={squad.cor} participantes={participantes.filter(participante => participante.squad === squad.nome)} aoDeletar={deletarParticipante} aoFavoritar={resolverFavorito}/> )}
+      </section>
       <Rodape/>
     </div>
   );
