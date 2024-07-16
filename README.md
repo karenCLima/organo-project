@@ -32,7 +32,7 @@ Antes de iniciar, certifique-se de ter os seguintes requisitos instalados:
    npm install
    ```
 
-3. Inicia a aplicação
+3. Inicie a aplicação
    ```
    npm start
    ```
