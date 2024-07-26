@@ -1,6 +1,7 @@
 # Projeto Organo
 
-Projeto Organo da **Oracle | ONE** + **Alura**: uma plataforma de organização de Squads desenvolvida utilizando React.
+Projeto Organo da **Oracle | ONE** + **Alura**: uma plataforma de organização de Squads desenvolvida utilizando React.  
+Link do projeto (https://organo-project-tawny.vercel.app/)
 
 ## Funcionalidades
 
